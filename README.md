@@ -20,19 +20,68 @@ Basic requirements
 * Microsoft .NET Framework 4.0 on Windows PC
 * Custom build of Mono.Zeroconf
 
-Documentation
--------------
+Getting Started
+---------------
 
-This library needs a lot more documentation. I have written documentation for parts of P2P Dictionary, which are available on my website.
+Several example projects using P2P Dictionary are in the ''examples'' directory.
+
+I have written documentation for parts of P2P Dictionary on my website.
 
 * Overview: http://www.rhfung.com/core/Engineering/P2PDictionary
 * Java library API: http://www.rhfung.com/more/p2p-dict-2.0-javadoc/
 * REST protocol: http://www.rhfung.com/core/Engineering/P2PProtocolDocumentation
 
-Getting Started
----------------
+This library needs a lot more documentation.
 
-Several example projects using P2P Dictionary are in the ''examples'' directory.
+Documentation
+-------------
+
+### Performance
+
+* Fastest response time for dictionary updates is 8 ms.
+
+### Methods
+
+P2PDictionary methods conform to IDictionary interface. Additional methods are:
+
+Additional dictionary methods:
+
+* `Clear()` removes all dictionary entries owned by this dictionary
+* `GetValue(key,msTimeout)` blocking call to read from the dictionary, waits for msTimeout, throws IndexOutOfRangeException
+* `TryGetValue(key)` blocking call to read from the dictionary, returns false if cannot get the value
+* `TryGetValue(key,msTimeOut)` blocking call to read from the dictionary, waits for msTimeout, returns false if cannot get the value
+* `AddSubscription("pattern")` adds a subscription that matches the pattern. Pattern matching is Visual Basic patterns (* for many characters, ? for a single character)
+
+Control methods:
+
+* `Abort()` force close all incoming and outgoing connections
+* `Close()` safely close all incoming and outgoing connections
+* `ConstructNetwork()` searches for peers on the network using Apple Bonjour -- must be enabled ahead of time??
+* `GetSubscriptions()` returns a list of subscriptions (subscribed patterns)
+* `OpenClient()` opens a client connection to a known remote peer
+* `OpenServer()` opens a server instance if not already specified on constructor
+* `RemoveSubscription()` removes a previously added subscription '''not tested'''
+
+Static methods:
+
+* `P2PDictionary.GetFreePort(port)` returns the next open free port at or above the specified value. Throws ApplicationException if the port cannot be found.
+
+### Properties
+
+* `DebugBuffer` sets/gets the buffer for debug messages
+* `Description` returns the friendly name for the dictionary, assigned on constructor
+* `LocalEndPoint` returns the IP address of the server
+* `LocalID` returns a unique ID number for the dictionary, should be unique to all peers
+* `Namespace` returns the namespace provided on constructor, must be the same to all peers on the network
+* `RemotePeersCount` returns the number of remotely connected peers
+
+### Events
+
+* `Connected` when a peer joins
+* `ConnectionFailure` when a peer fails to join
+* `Disconnected` when a peer departs
+* `Notified` when a subscribed dictionary key is added, changed, or removed
+* `SubscriptionChanged` when a subscription changes
 
 Change Log
 ----------
