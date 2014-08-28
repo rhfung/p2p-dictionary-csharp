@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBDFC883-564B-4C9D-B8A9-7BE271F3E891}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mono.ZeroConf.Win32</RootNamespace>
+    <AssemblyName>Mono.ZeroConf.Win32</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\BrowseService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\Native.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\RegisterService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\Service.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceClass.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceError.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceErrorException.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceFlags.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceRef.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ServiceType.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\TxtRecord.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\TxtRecordEnumerator.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour\ZeroconfProvider.cs" />
+    <Compile Include="Mono.Zeroconf.Providers\IZeroconfProvider.cs" />
+    <Compile Include="Mono.Zeroconf.Providers\ProviderFactory.cs" />
+    <Compile Include="Mono.Zeroconf.Providers\ZeroconfProviderAttribute.cs" />
+    <Compile Include="Mono.Zeroconf\AddressProtocol.cs" />
+    <Compile Include="Mono.Zeroconf\IRegisterService.cs" />
+    <Compile Include="Mono.Zeroconf\IResolvableService.cs" />
+    <Compile Include="Mono.Zeroconf\IService.cs" />
+    <Compile Include="Mono.Zeroconf\IServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf\ITxtRecord.cs" />
+    <Compile Include="Mono.Zeroconf\RegisterService.cs" />
+    <Compile Include="Mono.Zeroconf\RegisterServiceEventArgs.cs" />
+    <Compile Include="Mono.Zeroconf\RegisterServiceEventHandler.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceBrowseEventArgs.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceBrowseEventHandler.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceErrorCode.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceResolvedEventArgs.cs" />
+    <Compile Include="Mono.Zeroconf\ServiceResolvedEventHandler.cs" />
+    <Compile Include="Mono.Zeroconf\TxtRecord.cs" />
+    <Compile Include="Mono.Zeroconf\TxtRecordItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Mono.Zeroconf.Providers.Bonjour\Makefile.am" />
+    <None Include="Mono.Zeroconf.Providers.Bonjour\Makefile.in" />
+    <None Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.dll.config" />
+    <None Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.dll.config.in" />
+    <None Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\ResolveAssemblyReference.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj" />
+    <Content Include="Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj.user" />
+    <Content Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.csproj.FileListAbsolute.txt" />
+    <Content Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.dll" />
+    <Content Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\Mono.Zeroconf.Providers.Bonjour.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mono.Zeroconf.Providers.Bonjour\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

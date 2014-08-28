@@ -1,0 +1,54 @@
+2009-05-05: 0.9.0 Release
+
+	* Major bug fix in Avahi provider where service registration would not
+	  work most of the time due to the interface being set to 0 instead of
+	  unspecified (-1) by default
+
+	* Added the an ushort UPort property to IRegisterService for users who
+	  need to pass a port value greater than Int16.MaxValue without having
+	  to do an unchecked cast of the ushort port to short
+
+2008-09-11: 0.8.0 Release
+
+	* New Avahi provider using DBus instead of libavahi
+
+	* Improved IPv6 support (AddressProtocol/A6 query support)
+
+	* Garbage Collection bug fixed in the Bonjour backend, regarding delegates
+	  passed to native code being GCed prematurely; thanks to Josh Coole
+
+	* New MZClient features: support for setting interface, domain, and
+	  address type restrictions on browse/resolve operations; new general
+	  verbosity options
+
+2008-03-20: 0.7.6 Release
+
+	* Added a NetworkInterface property to the IService object
+
+	* Support IPv6 host address resolutions and set the IPv6 zone 
+	  automatically to the network interface index
+
+2008-01-25: 0.7.5 Release
+
+	* Fixed major packaging/install bug - 0.7.4 lacked GAC version policy
+	  assembly support, so applications could break when Mono.Zeroconf
+	  were upgraded
+
+	* Visual Studio solution/projects now work with Visual Studio 2005
+
+2008-01-23: 0.7.4 Release
+
+    * Fixed a big IP address resolution bug in the Bonjour provider 
+      that manifested only under .NET on Windows XP SP2
+
+    * Minor bug fix in MZClient
+
+    * Make it easy to build and use on Windows
+      - Added Visual Studio 2008 solution
+      - Publish the source code as a Zip archive (along with tar gz and bzip2)
+      - Publish a -binary.zip file for Windows containing pre-built assemblies
+
+2007-12-19: 0.7.3 Release
+
+    * First release that works on Linux, Mac, and Windows
+

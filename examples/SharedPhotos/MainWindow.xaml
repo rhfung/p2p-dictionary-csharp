@@ -1,0 +1,13 @@
+﻿<Window x:Class="SharedPhotos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Closing="Window_Closing"    >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125*" />
+            <ColumnDefinition Width="378*" />
+        </Grid.ColumnDefinitions>
+        <ListBox  HorizontalAlignment="Stretch" Name="listBox1" VerticalAlignment="Stretch" SelectionChanged="listBox1_SelectionChanged" />
+        <Image Grid.Column="1" Height="311" HorizontalAlignment="Stretch" Name="image1" Stretch="UniformToFill" VerticalAlignment="Stretch" Width="366" />
+    </Grid>
+</Window>

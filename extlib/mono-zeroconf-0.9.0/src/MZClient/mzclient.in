@@ -1,0 +1,3 @@
+#!/bin/bash
+mono --debug @expanded_libdir@/mono-zeroconf/MZClient.exe "$@"
+

@@ -1,0 +1,51 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="Mono.Zeroconf" Version="4.0.0.90">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("Novell, Inc.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2006-2009 Novell, Inc.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("Cross Platform Zeroconf for .NET")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("Mono.Zeroconf")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>Cross Platform Zeroconf for .NET.</Remarks>
+  <Copyright>Copyright (C) 2006-2007 Novell, Inc.</Copyright>
+  <Types>
+    <Namespace Name="Mono.Zeroconf">
+      <Type Name="AddressProtocol" Kind="Enumeration" />
+      <Type Name="IRegisterService" Kind="Interface" />
+      <Type Name="IResolvableService" Kind="Interface" />
+      <Type Name="IService" Kind="Interface" />
+      <Type Name="IServiceBrowser" Kind="Interface" />
+      <Type Name="ITxtRecord" Kind="Interface" />
+      <Type Name="RegisterService" Kind="Class" />
+      <Type Name="RegisterServiceEventArgs" Kind="Class" />
+      <Type Name="RegisterServiceEventHandler" Kind="Delegate" />
+      <Type Name="ServiceBrowseEventArgs" Kind="Class" />
+      <Type Name="ServiceBrowseEventHandler" Kind="Delegate" />
+      <Type Name="ServiceBrowser" Kind="Class" />
+      <Type Name="ServiceErrorCode" Kind="Enumeration" />
+      <Type Name="ServiceResolvedEventArgs" Kind="Class" />
+      <Type Name="ServiceResolvedEventHandler" Kind="Delegate" />
+      <Type Name="TxtRecord" Kind="Class" />
+      <Type Name="TxtRecordItem" Kind="Class" />
+    </Namespace>
+    <Namespace Name="Mono.Zeroconf.Providers">
+      <Type Name="IZeroconfProvider" Kind="Interface" />
+      <Type Name="ZeroconfProviderAttribute" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>Mono.Zeroconf</Title>
+</Overview>

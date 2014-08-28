@@ -1,0 +1,8 @@
+﻿<Window x:Class="CameraReceiver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Camera Receiver" Height="350" Width="525">
+    
+        <Image Name="image1" Stretch="UniformToFill"  />
+    
+</Window>

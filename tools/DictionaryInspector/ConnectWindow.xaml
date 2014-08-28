@@ -1,0 +1,21 @@
+﻿<Window x:Class="DictionaryInspector.ConnectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ConnectWindow" Height="206" Width="370">
+    <Grid>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="125,38,0,0" Name="cboNamespace" VerticalAlignment="Top" Width="172" IsEditable="True">
+            <ComboBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Clear Selected" Click="clearSelected_Click" />
+                    <MenuItem Header="Reset List" Click="resetList_Click" />
+                </ContextMenu>
+            </ComboBox.ContextMenu>
+        </ComboBox><Label Content="Namespace:" Height="28" HorizontalAlignment="Left" Margin="26,38,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Port:" Height="23" HorizontalAlignment="Left" Margin="32,81,0,0" Name="label2" VerticalAlignment="Top" Width="94" />
+        <TextBox  Height="19" HorizontalAlignment="Left" Margin="125,83,0,0" Name="txtPort" VerticalAlignment="Top" Width="98" Text="1234" />
+        <Label Content="or higher" Height="28" HorizontalAlignment="Left" Margin="239,81,0,0" Name="label3" VerticalAlignment="Top" />
+        <Button Content="Connect" Height="26" HorizontalAlignment="Left" Margin="125,129,0,0" Name="btnConnect" VerticalAlignment="Top" Width="82" Click="button1_Click" />
+        
+        
+    </Grid>
+</Window>

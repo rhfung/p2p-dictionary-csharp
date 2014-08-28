@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74AE4963-474A-444D-B194-176EEA7B5EEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.rhfung.P2PDictionary</RootNamespace>
+    <AssemblyName>com.rhfung.P2PDictionary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Mono.ZeroConf.Win32">
+      <HintPath>..\..\extlib\mono-zeroconf-0.9.0\bin\Mono.ZeroConf.Win32.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConnectionEventArgs.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="DataConnection.cs" />
+    <Compile Include="DataEntry.cs" />
+    <Compile Include="DataHeader.cs" />
+    <Compile Include="DataProvider\IDataProvider.cs" />
+    <Compile Include="DataUnsupported.cs" />
+    <Compile Include="EndpointInfo.cs" />
+    <Compile Include="LogInstructions.cs" />
+    <Compile Include="NetworkUtil.cs" />
+    <Compile Include="P2PDictionary.cs" />
+    <Compile Include="P2PNetworkMetadata.cs" />
+    <Compile Include="WeakDataServer.cs" />
+    <Compile Include="NetworkDelay.cs" />
+    <Compile Include="NotificationEventArgs.cs" />
+    <Compile Include="P2PDictionaryMode.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SendMemory.cs" />
+    <Compile Include="DataMissing.cs" />
+    <Compile Include="ETag.cs" />
+    <Compile Include="IMessageController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subscription.cs" />
+    <Compile Include="SubscriptionEventArgs.cs" />
+    <Compile Include="SubscriptionException.cs" />
+    <Compile Include="UIDGenerator.cs" />
+    <Compile Include="PeerDiscovery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\error.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
