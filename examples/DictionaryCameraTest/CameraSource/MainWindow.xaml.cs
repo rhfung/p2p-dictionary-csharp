@@ -92,7 +92,7 @@ namespace CameraSource
                     lastBuffer.Dispose();
                 }
                 lastBuffer = buffer;
-                dict["frame"] = buffer;
+                dict["frame"] = buffer.ToArray();
                 dict["frame_number"] = frameTicker++;
             });
         }

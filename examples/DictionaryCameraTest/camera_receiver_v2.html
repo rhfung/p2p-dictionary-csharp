@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <img id="loadimg" src='http://192.168.99.100:8765/data/cameratest/frame'>
+  </body>
+  <script type='text/javascript'>
+    var loop = function() {
+      $("#loadimg").attr("src", "http://192.168.99.100:8765/data/cameratest/frame?" + (new Date()).getTime());
+      window.setTimeout(loop, 30);
+    };
+
+    window.setTimeout(loop, 30);
+  </script>
+</html>

@@ -49,7 +49,8 @@ namespace CameraReceiver
             }
             else if (e.Key == "frame")
             {
-                MemoryStream stream = dict["frame"] as MemoryStream;
+                byte[] bytes = dict["frame"] as byte[];
+                MemoryStream stream = new MemoryStream(bytes);
                 stream.Seek(0, SeekOrigin.Begin);
                 Dispatcher.Invoke((Action)delegate()
                 {
