@@ -8,7 +8,7 @@ using System.Threading;
 namespace com.rhfung.P2PDictionary
 {
     // Apple Bonjour's peer discovery only works as a singleton
-    class PeerDiscovery
+    class PeerDiscovery: IDisposable
     {
         private const string ZEROCONF_NAME = "_com-rhfung-peer._tcp";
 
@@ -29,12 +29,6 @@ namespace com.rhfung.P2PDictionary
         public PeerDiscovery()
         {
             
-        }
-
-        ~PeerDiscovery()
-        {
-            //UnregisterServer();
-            //StopBrowsing();
         }
 
         public void BrowseServices()
@@ -159,6 +153,15 @@ namespace com.rhfung.P2PDictionary
                 {
                     DiscoveredPeers.Remove(uid);
                 }
+            }
+        }
+
+        public void Dispose()
+        {
+            if (service != null)
+            {
+                service.Dispose();
+                service = null;
             }
         }
     }

@@ -9,7 +9,7 @@ using System.IO;
 namespace com.rhfung.P2PDictionary
 {
     //IDictionary<TKey, TValue>
-    public class P2PDictionary : IMessageController, ISubscriptionChanged, IDictionary<string, object>
+    public class P2PDictionary : IMessageController, ISubscriptionChanged, IDictionary<string, object>, IDisposable
     {
         internal const string DATA_NAMESPACE = DataConnection.DATA_NAMESPACE; // /BLAH
         internal const int MAX_RANDOM_NUMBER = 10;
@@ -109,11 +109,6 @@ namespace com.rhfung.P2PDictionary
             }
 
             this.debugBuffer = null;
-        }
-
-        ~P2PDictionary()
-        {
-            Close(true);
         }
 
         /// <summary>
@@ -632,6 +627,7 @@ namespace com.rhfung.P2PDictionary
             if (this.discovery != null)
             {
                 this.discovery.UnregisterServer();
+                this.discovery.Dispose();
                 this.discovery = null;
             }
 
@@ -668,6 +664,16 @@ namespace com.rhfung.P2PDictionary
                     }
                 }
             }
+
+            if (disposing)
+            {
+                if (this.dataLock != null)
+                {
+                    this.dataLock.Dispose();
+                    this.dataLock = null;
+                }
+            }
+
         }
 
 
@@ -830,7 +836,7 @@ namespace com.rhfung.P2PDictionary
             {
                 conn.ReadLoop(tinfo.connection);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -1316,7 +1322,22 @@ namespace com.rhfung.P2PDictionary
 
         public ICollection<object> Values
         {
-            get { throw new NotImplementedException(); }
+            get {
+                dataLock.EnterReadLock();
+                List<object> retValue;
+                try
+                {
+                    retValue = new List<object>(this.data
+                        .Where(x => IsFullKeyInNamespace(DATA_NAMESPACE, _namespace, x.Key))
+                        .Where(x => x.Value.subscribed)
+                        .Select(x => x.Value.value));
+                }
+                finally
+                {
+                    dataLock.ExitReadLock();
+                }
+                return retValue;
+            }
         }
 
         public bool Contains(KeyValuePair<string, object> item)
@@ -1406,7 +1427,7 @@ namespace com.rhfung.P2PDictionary
                     NotificationEventArgs newarg = new NotificationEventArgs(args._Entry, GetUserKey(DATA_NAMESPACE, _namespace, args.Key ), args.Reason, args.Value);
                     Notification.Invoke(this, newarg);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     System.Diagnostics.Debug.Assert(false);
                 }
@@ -1425,7 +1446,7 @@ namespace com.rhfung.P2PDictionary
                     newarg.Reason = args.Reason;
                     SubscriptionChanged.Invoke(this, newarg);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     System.Diagnostics.Debug.Assert(false);
                 }
@@ -1483,7 +1504,7 @@ namespace com.rhfung.P2PDictionary
                     args.RemoteUID = conn.RemoteUID;
                     Connected(this, args);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     System.Diagnostics.Debug.Assert(false);
                 }
@@ -1501,13 +1522,28 @@ namespace com.rhfung.P2PDictionary
                     args.RemoteUID = conn.RemoteUID;
                     Disconnected(this, args);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     System.Diagnostics.Debug.Assert(false);
                 }
             }
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // The bulk of the clean-up code is implemented in Dispose(bool)  
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Close(true);
+            }
+            // free native resources if there are any.  
+        }
 
         List<EndpointInfo> IMessageController.AllEndPoints
         {

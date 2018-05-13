@@ -437,11 +437,11 @@ namespace com.rhfung.P2PDictionary
                     
                 }
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 // good bye
             }
-            catch (IOException ex)
+            catch (IOException)
             {
                 // good bye
             }

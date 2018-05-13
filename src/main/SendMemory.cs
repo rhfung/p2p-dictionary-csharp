@@ -7,7 +7,7 @@ using System.IO;
 
 namespace com.rhfung.P2PDictionary
 {
-    abstract class SendMemory
+    abstract class SendMemory: IDisposable
     {
         public string ContentLocation;
 
@@ -28,6 +28,14 @@ namespace com.rhfung.P2PDictionary
             this.ContentLocation = contentLoc;
             this.PeerList = senderList;
             this.MemBuffer = new MemoryStream();
+        }
+
+        public void Dispose()
+        {
+            if (this.MemBuffer != null)
+            {
+                this.MemBuffer.Dispose();
+            }
         }
 
         //public DataSendMessage(string key, ETag version, List<int> senderList)

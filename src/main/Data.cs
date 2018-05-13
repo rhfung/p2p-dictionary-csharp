@@ -37,54 +37,6 @@ namespace com.rhfung.P2PDictionary
 
         }
 
-        public void DetectTypeFromValue()
-        {
-            if (this.value is byte[])
-            {
-                this.type = ValueType.Binary;
-            }
-            else if (this.value is Single)
-            {
-                this.type = ValueType.Single;
-            }
-            else if (this.value is Double)
-            {
-                this.type = ValueType.Double;
-            }
-            else if (this.value is Boolean)
-            {
-                this.type = ValueType.Boolean;
-            }
-            else if (this.value is Int16)
-            {
-                this.type = ValueType.Int16;
-            }
-            else if (this.value is Int32)
-            {
-                this.type = ValueType.Int32;
-            }
-            else if (this.value is Int64)
-            {
-                this.type = ValueType.Int64;
-            }
-            else if (this.value is String)
-            {
-                this.type = ValueType.String;
-            }
-            else if (this.value == null)
-            {
-                this.type = ValueType.Null;
-            }
-            else if (this.value is DataUnsupported)
-            {
-                this.type = ValueType.Unknown;
-            }
-            else
-            {
-                this.type = ValueType.Object;
-            }
-        }
-
         public enum ValueType
         {
             Removed, // empty

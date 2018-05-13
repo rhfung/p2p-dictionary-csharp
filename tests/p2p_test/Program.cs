@@ -9,6 +9,7 @@ namespace TestP2PDict
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             // FileStream fs = new FileStream("setup-jammanhci-2.3.exe", FileMode.Open);
