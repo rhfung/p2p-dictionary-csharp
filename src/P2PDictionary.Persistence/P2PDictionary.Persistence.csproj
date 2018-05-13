@@ -46,12 +46,6 @@
     <Compile Include="Persistence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\main\P2PDictionary.csproj">
-      <Project>{74AE4963-474A-444D-B194-176EEA7B5EEB}</Project>
-      <Name>P2PDictionary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

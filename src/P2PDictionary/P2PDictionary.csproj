@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource />
+    <AssemblyName>P2PDictionary</AssemblyName>
+    <RootNamespace>com.rhfung.P2PDictionary</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mono.Zeroconf" Version="0.9.0" />
+  </ItemGroup>
+
+</Project>

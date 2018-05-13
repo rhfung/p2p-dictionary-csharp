@@ -37,6 +37,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.Zeroconf, Version=4.0.0.90, Culture=neutral, PublicKeyToken=e60c4f4a95e1099e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Zeroconf.Providers.Bonjour, Version=4.0.0.90, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.Providers.Bonjour.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -52,13 +58,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\main\P2PDictionary.csproj">
-      <Project>{74ae4963-474a-444d-b194-176eea7b5eeb}</Project>
-      <Name>P2PDictionary</Name>
-    </ProjectReference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\..\src\P2PDictionary\P2PDictionary.csproj">
+      <Project>{5176ade7-e923-422d-92b3-6ba10d884891}</Project>
+      <Name>P2PDictionary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

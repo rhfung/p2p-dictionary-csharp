@@ -39,8 +39,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.ZeroConf.Win32">
-      <HintPath>..\..\..\uc1\projects\p2p-dictionary\p2p_dict\bin\Debug\Mono.ZeroConf.Win32.dll</HintPath>
+    <Reference Include="Mono.Zeroconf, Version=4.0.0.90, Culture=neutral, PublicKeyToken=e60c4f4a95e1099e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Zeroconf.Providers.Bonjour, Version=4.0.0.90, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.Providers.Bonjour.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -100,6 +103,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,8 +111,8 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\main\P2PDictionary.csproj">
-      <Project>{74ae4963-474a-444d-b194-176eea7b5eeb}</Project>
+    <ProjectReference Include="..\..\src\P2PDictionary\P2PDictionary.csproj">
+      <Project>{5176ade7-e923-422d-92b3-6ba10d884891}</Project>
       <Name>P2PDictionary</Name>
     </ProjectReference>
   </ItemGroup>

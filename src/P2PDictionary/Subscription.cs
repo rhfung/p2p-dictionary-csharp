@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace com.rhfung.P2PDictionary
 {
@@ -39,11 +40,24 @@ namespace com.rhfung.P2PDictionary
             notifier.RemovedSubscription(this, wildcardString);
         }
 
+        private static bool LikeString(string key, string subscription)
+        {
+            string regexSubscription = subscription.Replace("/", "\\/"); // safeguard paths
+            regexSubscription = regexSubscription.Replace(".", "\\.");  // remove dot operator
+            regexSubscription = regexSubscription.Replace("*", ".*");   // wildcard search
+            regexSubscription = regexSubscription.Replace("?", ".");    // single character
+            regexSubscription = regexSubscription.Replace("#", "\\d");  // digit
+            regexSubscription = "^" + regexSubscription + "$";
+            var exp = new Regex(regexSubscription);
+            return exp.Match(key).Success;
+        }
+
+
         public bool IsSubscribed(string key)
         {
             lock (subscriptions)
             {
-                return subscriptions.Any(x => Microsoft.VisualBasic.CompilerServices.Operators.LikeString(key, x, Microsoft.VisualBasic.CompareMethod.Binary));
+                return subscriptions.Any(subscription => LikeString(key, subscription));
             }
         }
 
