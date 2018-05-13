@@ -47,32 +47,8 @@ namespace TestP2PDict
             port92.DebugBuffer = new StreamWriter("output-92.txt");
             // stuck.AddSubscription("*");
             port92.AddSubscription("number");
-
-            /*
-            FormPeerOverview form1 = new FormPeerOverview();
-            form1.Show();
-            form1.SetServer(server);
-
-            FormPeerOverview form2 = new FormPeerOverview();
-            form2.Show();
-            form2.SetServer(client);
-
-            FormPeerOverview form3 = new FormPeerOverview();
-            form3.Show();
-            form3.SetServer(client2);
-
-            FormPeerOverview form4 = new FormPeerOverview();
-            form4.Show();
-            form4.SetServer(server3);
-
-            FormPeerOverview form5 = new FormPeerOverview();
-            form5.Show();
-            form5.SetServer(stuck);
-
+            
             System.Console.WriteLine("Press space bar to quit");
-
-            System.Windows.Forms.Application.Run(form1);
-             */
 
             port81.OpenClient(System.Net.IPAddress.Loopback, 80);
             port82.OpenClient(System.Net.IPAddress.Loopback, 81);

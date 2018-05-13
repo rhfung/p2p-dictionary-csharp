@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Mono.Zeroconf;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Mono.Zeroconf;
-using System.Threading;
 
 namespace com.rhfung.P2PDictionary
 {

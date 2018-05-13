@@ -48,19 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormPeerOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPeerOverview.Designer.cs">
-      <DependentUpon>FormPeerOverview.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FormPeerOverview.resx">
-      <DependentUpon>FormPeerOverview.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\main\P2PDictionary.csproj">
