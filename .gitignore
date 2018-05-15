@@ -9,3 +9,4 @@
 *.DS_Store
 [Tt]humbs.db 
 .vs
+*.stackdump
