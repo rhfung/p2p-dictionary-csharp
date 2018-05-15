@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mono.Zeroconf" Version="0.9.0" />
+    <ProjectReference Include="..\..\extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf\Mono.Zeroconf.csproj" />
   </ItemGroup>
 
 </Project>

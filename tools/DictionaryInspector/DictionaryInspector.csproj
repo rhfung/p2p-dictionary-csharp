@@ -54,15 +54,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Zeroconf, Version=4.0.0.90, Culture=neutral, PublicKeyToken=e60c4f4a95e1099e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Zeroconf.Providers.Bonjour, Version=4.0.0.90, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mono.Zeroconf.0.9.0.0\lib\Net20\Mono.Zeroconf.Providers.Bonjour.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Zeroconf.Win32, Version=1.0.0.0, Culture=neutral,  processorArchitecture=MSIL">
-      <HintPath>..\..\bin\Mono.Zeroconf.Win32.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -121,7 +112,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,6 +119,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj">
+      <Project>{623325e2-5821-4701-a40c-3759097008dd}</Project>
+      <Name>Mono.Zeroconf.Providers.Bonjour</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf\Mono.Zeroconf.csproj">
+      <Project>{5cf88e3a-13dd-4114-bad9-da826946516f}</Project>
+      <Name>Mono.Zeroconf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\P2PDictionary\P2PDictionary.csproj">
       <Project>{5176ade7-e923-422d-92b3-6ba10d884891}</Project>
       <Name>P2PDictionary</Name>

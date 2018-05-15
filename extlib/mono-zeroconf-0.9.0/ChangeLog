@@ -1,0 +1,546 @@
+2009-05-05  Aaron Bockover  <abockover@novell.com>
+
+	0.9.0 Released
+
+	* NEWS: Updated with 0.9.0 release notes
+
+	* mono-zeroconf.spec: Updated
+
+2009-03-30  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IRegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Use ushort internally for the port value, add new UPort property on 
+	IRegisterService so an unchecked cast is not necessary for port values that
+	overflow Int16 (http://mono-project.com/Mono.Zeroconf#Known_Workarounds)
+
+2009-03-30  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	Set the interface to unspecified by default, fixing a bug reported on 
+	Stack Overflow (http://stackoverflow.com/questions/599846)
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Verify that the server is indeed running by calling server.GetState ()
+	before creating a new entry group
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiServerState.cs:
+	Added AvahiServerState enum
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	Add the GetState method
+
+2008-09-11  Aaron Bockover  <abockover@novell.com>
+
+	0.8.0 Released
+
+	* NEWS: Updated with 0.8.0 release notes
+
+	* mono-zeroconf.spec: Updated
+
+2008-08-27  Brad Taylor  <brad@getcoded.net>
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	Fix an exception when a key but no value is present for a TxtRecord.
+
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	Make the Render method static since we'll never get real reference handle
+	to the inner record object
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/EntryGroupState.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/PublishFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ErrorCode.cs:
+	Some new enums
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	Add the EntryGroup factory method
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiEntryGroup.cs:
+	Define the EntryGroup interface
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	Provide a default constructor
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ZeroconfProvider.cs:
+	Implement the RegisterService and TxtRecord types
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Implement RegisterService, but it doesn't seem to work yet
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs:
+	Some more utilities, yay
+
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceBrowser.cs: Set the domain to 
+	local if null is passed
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	Ensure null is never passed over DBus
+
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
+	* configure.ac: Fix AVAHI_LIBS to be relevant for the dbus provider
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/NDesk.DBus: Imported and fixed
+	managed DBus so it actually works with the horrible design of Avahi's
+	DBus API; this bundle is absolutely necessary as it contains a workaround
+	in Connection.cs to defer signal messages until they are manually asked
+	to be released; this allows managed signal handlers to be connected after
+	the message on the wire has come through and sent out at later time; a
+	system version of managed DBus /will not work at all/
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	Call TrapSignals and UntrapSignals on the Bus
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs:
+	Expose the Bus
+
+2008-06-25  Aaron Bockover  <abock@gnome.org>
+
+	* configure.ac:
+	* src/AssemblyInfo.cs: Bumped version
+
+	* src/MZClient/ZeroconfClient.cs: Added more options including support
+	for setting interface, domain, address type, and some verbose stuffs
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/IResolvableService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	Added AddressProtocol support
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Added AddressProtocol support and make A6 queries
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/ServiceBrowser.cs:
+	Use some generics internally and implement the new IEnumerable generic
+	requirement and the new extended Browse method
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceBrowser.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IServiceBrowser.cs: Implement 
+	IEnumerable<IResolvableService> and extend the Browse method
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/AddressProtocol.cs: New enum to specify
+	what address types to resolve
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus.csproj:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ZeroconfProvider.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Protocol.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceResolver.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/LookupResultFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceBrowser.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/LookupFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs:
+	Fully implement browse and resolve through the avahi dbus API
+
+2008-06-25  Aaron Bockover  <abock@gnome.org>
+
+	This commit integrates AvahiDBus provider into the build, cleans up the
+	DBus iteration and starts to implement the DBus stuff; not working, and 
+	the avahi-sharp provider is disabled in the build for now. Do not use
+	this revision.
+
+2008-04-02  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/ServiceBrowser.cs:
+	Fixed a big bug reported by Josh Cooley wherein delegates passed to 
+	native code could be GCed at the wrong time, apparently particularly 
+	noticeable on MS.NET
+
+2008-03-20  Aaron Bockover  <abockover@novell.com>
+
+	0.7.6 Released
+
+	* NEWS: Updated with 0.7.6 release notes
+
+	* mono-zeroconf.spec: Updated
+
+2008-03-20  Aaron Bockover  <abockover@novell.com>
+
+	This commit adds a new service property, NetworkInterface, and host
+	resolutions now support IPv6 - thanks to Sebastian Dröge
+
+	* src/MZClient/ZeroconfClient.cs: Print the network interface when a
+	service is resolved
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/IResolvableService.cs: Added a 
+	NetworkInterface property
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ResolvableService.cs:
+	Provide the new NetworkInterface property and support setting the interface
+	as an IPv6 zone on the resolved host address
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Set the interface as an IPv6 zone on the resolved host address
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	Provide the new NetworkInterface property
+
+	* configure.ac:
+	* src/AssemblyInfo.cs:
+	* src/policy.config.in:
+	* src/Makefile.include: Fix up more assembly policy stuff - so annoying
+
+2008-01-25  Aaron Bockover  <abockover@novell.com>
+
+	0.7.5 Released
+
+	* NEWS: Updated with 0.7.5 release notes
+
+	* mono-zeroconf.spec: Updated spec file
+
+2008-01-25  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check for al2, not al
+
+2008-01-24  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check for al, set policy/api version variables
+
+	* src/Makefile.include: Rules for building the policy assembly and 
+	installing/uninstalling from the GAC; stolen from Mono.Addins
+
+	* src/policy.config.in: Policy definition file
+
+	* src/Mono.Zeroconf/Makefile.am: Build and install the assembly 
+	versioning policy
+
+2008-01-23  Aaron Bockover  <abockover@novell.com>
+
+	0.7.4 Released
+
+	* NEWS: Updated with 0.7.4 release notes
+
+	* configure.ac: Output a zip file during dist for our Windows friends
+
+	* Makefile.am: Rename the zip file containing the binaries for Windows
+	so it doesn't conflict with the source zip file
+
+	* COPYING: Updated copyright
+
+2008-01-23  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf.sln:
+	* src/Mono.Zeroconf/Mono.Zeroconf.csproj:
+	* src/MZClient/MZClient.csproj:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.csproj:
+	Added Visual Studio 2008 solution/projects; MonoDevelop can use these
+	just fine, so there's no need for MD specific projects
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi.mdp:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.mdp:
+	* src/MZClient/MZClient.mdp:
+	* src/Mono.Zeroconf/Mono.Zeroconf.mdp:
+	* Mono.Zeroconf.mds: Removed MonoDevelop solution/projects
+
+	* configure.ac:
+	* src/AssemblyInfo.cs:
+	* src/AssemblyInfo.cs.in: Get rid of the .in, and just manually update
+	the assembly version so no pre-build stuff is needed in Visual Studio
+
+2008-01-22  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Bump to 0.7.4
+
+	* Makefile.am
+	* README.Windows: Added information about Bonjour for Windows
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Fix a bad bug where we were reading the raw IP address binary blob as a
+	signed integer. IP addresses are unsigned. This manifested in bad ways
+	on at least Windows XP SP2, but was covered up in Mono due to the 
+	casting that went on underneath the hood (Int32->Int64); thanks to 
+	Chris Williams for uncovering the problem
+
+2008-01-08  Aaron Bockover  <abockover@novell.com>
+
+	* src/MZClient/ZeroconfClient.cs: Fix a minor bug found by
+	Luciano Antonio Costa; remove some bad Console.WriteLines
+
+2007-12-27  Aaron Bockover  <abockover@novell.com>
+
+	* src/mono-zeroconf.pc.in: Fix libdir problem (Ken Vandine)
+
+2007-12-27  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Move the
+	executing assembly directory scan to after the scan for 
+	MONO_ZEROCONF_PROVIDERS; set the file scan mask to 
+	Mono.Zeroconf.Providers.*.dll instead of *.dll
+
+2007-12-23  Aaron Bockover  <abockover@novell.com>
+
+	* Makefile.am: Added a dist-windows target to generate a zip file
+	containing just the binaries
+
+	* README: Fixed URL
+
+2007-12-19  Aaron Bockover  <abockover@novell.com>
+
+	0.7.3 Released
+
+	* NEWS: Updated
+
+2007-11-30  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Check for 
+	the root path element in the path split since Windows is stupid
+
+2007-11-30  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check the host for OS X/Darwin and set mdns_target_library
+	to libc, since that's where their mDNSResponder APIs are; set it to
+	libnss_mdns-0.2.so for everything else (Linux, since the mapping name
+	is valid for Windows, the .config file doesn't need shipping)
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll.config.in:
+	Moved to .in since we need to generate it for Linux/Darwin
+
+2007-08-28  Aaron Bockover  <abockover@novell.com>
+
+	0.7.2 Released
+
+	* configure.ac: Bump to 0.7.2
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs:
+	Try to connect to the daemon to see if provider will be available
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Throw
+	a meaningful exception if no providers are available
+
+2007-08-28  Aaron Bockover  <abockover@novell.com>
+
+	* docs/*: Updated docs
+
+2007-08-28  Aaron Bockover  <abockover@novell.com>
+
+	* src/MZClient/ZeroconfClient.cs:
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/AvahiUtils.cs:
+	Use NameConflict, not AlreadyRegistered if there is a name conflict 
+	error when registering a service
+
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
+	0.7.1 Released
+
+	* src/Mono.Zeroconf.Providers.Avahi/Makefile.am:
+	* src/MZClient/Makefile.am: Install mdb files
+
+	* src/Mono.Zeroconf/Makefile.am: Removed old install stuff
+
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check for gacutil
+
+	* src/mono-zeroconf.pc.in: Updated to reflect GAC path
+
+	* src/mono-zeroconf.snk: Added strong name key file
+
+	* src/Makefile.am: Keyfile
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Support
+	loading plugins from the libdir location based on the GAC assembly path
+
+	* src/Mono.Zeroconf/Makefile.am: Install into the GAC
+
+	* docs/Makefile.am: Fixed up to not need MonodocNodeConfig 
+
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
+	* src/MZClient/ZeroconfClient.cs: Make the default browse type _workstation
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Make the version alpha1 for a test release
+
+	* docs/: Updated
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/RegisterService.cs:
+	Export the TXT record
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs:
+	Provide the register service and TXT record class
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/RegisterService.cs:
+	Implemented a register service for Avahi
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/AvahiUtils.cs:
+	Some small utility functions
+
+	* src/MZClient/ZeroconfClient.cs: Support the response event 
+	on RegisterService
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	Updated to reflect IRegisterService API changes
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IRegisterService.cs: Added a Response
+	event
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterServiceEventArgs.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterServiceEventHandler.cs:
+	Moved from Bonjour and generalized
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceErrorCode.cs: Generalized error
+	codes that providers are expected to use
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ServiceBrowser.cs:
+	Added service removed support
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Allow mDNSResponder to be disabled; link against 
+	avahi-sharp again since the DBus effort is on pause for now
+
+	* src/Mono.Zeroconf.Providers.Avahi/*: Restored the avahi-sharp version
+	of the Avahi provider
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/*: Added code for the Avahi DBus
+	provider, but this does not build. It's just a safe keeping for the 
+	future when we may actually be able to implement the Avahi DBus provider;
+	there are some things that may need addressing in NDesk DBus and/or
+	Avahi proper
+
+2007-08-21  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf: Tons of reorg, cleanup, etc. Mono.Zeroconf will soon
+	be released alongside Mono - preparing for this
+
+	* docs/: Initial work on filling in documentation
+
+2006-11-28  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf.Avahi/*: Initial Avahi implementation (no registration yet)
+
+	* Mono.Zeroconf/ZeroconfProvider.cs: Load providers at runtime (Avahi)
+
+	* Mono.Zeroconf/*.cs: 
+	* Test/Makefile: 
+	* Makefile:
+	* Mono.Zeroconf.mds: Updated
+
+2006-11-28  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf/*.cs: New generic API/wrapper layer around MDNS provider
+	layers. The top-level Mono.Zeroconf namespace is now the preferred API
+	for applications. This API does runtime provider detection.
+
+	* Mono.Zeroconf/Mono.Zeroconf.Bonjour/*.cs: Moved the mDNSResponder
+	implementation and refactored pieces to work with the above generic
+	API. This implementation is now available directly through the 
+	Mono.Zeroconf.Bonjour namespace and is just one provider.
+
+	* Project: Cleaned up Makefiles, MonoDevelop solution/projects
+
+2006-04-24  Aaron Bockover  <aaron@abock.org>
+
+	* Test/ZeroConfTest.cs: removed
+
+	* Test/ZeroconfClient.cs: Added new replacement client (mzclient) for the 
+	mDNSClient tool that ships with Bonjour on UNIX. mzclient supports 
+	service resolving and publishing, unlinke mDNSClient
+
+	* Test/mzclient.in: Added wrapper script for mzclient.exe
+
+	* Mono.Zeroconf/Makefile: Build mzclient.exe and added install-client
+	rule for installing mzclient into /usr (hardcoded for now)
+
+	* Mono.Zeroconf.mdp: Updated MonoDevelop project
+
+2006-04-07  James Willcox  <snorp@snorp.net>
+
+	* Mono.Zeroconf/ServiceType.cs: the enum should use
+	a ushort as its value.
+	* Mono.Zeroconf/ServiceClass.cs: ditto
+
+	Make stuff work on win32
+
+2006-04-04  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Native.cs: Added DNSServiceCreateConnection
+
+	* Mono.Zeroconf/Service.cs: Added a static Zeroconf class with a 
+	simple Initialize method to test creating and destroying a connection
+	to the daemon
+
+	* Test/ZeroConfTest.cs: Added a test call to Zeroconf.Initialize() 
+
+2006-03-11  James Willcox  <snorp@snorp.net>
+
+	* Mono.Zeroconf/BrowseService.cs: pass the interface index
+	to DNSServiceQueryRecord when getting the IP address.
+
+2006-03-07  James Willcox  <snorp@snorp.net>
+
+	* Mono.Zeroconf/Native.cs: change the P/Invoke dll to
+	dnssd.dll, which works on Windows.
+	* Mono.Zeroconf/Mono.Zeroconf.config: ditto
+
+2006-03-07  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/BrowseService.cs: Use DNSServiceQueryRecord to run an
+	A query to resolve IP addresses
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): Removed set modifier; no
+	.local. stripping and do not try to resolve using gethostbyname
+
+2006-03-05  Aaron Bockover  <aaron@abock.org>
+
+	* Test/ZeroConfTest.cs: Added a test call to RefreshTxtRecord()
+
+	* Mono.Zeroconf.mdp: Updated MonoDevelop project
+
+	* Mono.Zeroconf/BrowseService.cs: Allow TXT record refreshing using
+	DNSServiceQueryRecord
+
+	* Mono.Zeroconf/Native.cs: Added support for DNSServiceQueryRecord
+
+	* Mono.Zeroconf/ServiceBrowser.cs:
+	* Mono.Zeroconf/RegisterService.cs: Call Thread.ResetAbort() when
+	handling a ThreadAbortException to allow execution to continue in thread
+
+2006-02-20  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): Was still using value
+	to look up host; use the stripped hosttarget string instead
+
+2006-02-20  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): If target ends with .local.,
+	strip it before resolving as System.Net.Dns.GetHostByName will fail to
+	resolve if there is a VPN connection
+
+2006-02-15  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf: Renamed everything from Mono.ZeroConf to Mono.Zeroconf
+	as that's what Apple calls it; cleaned up build system
+
+	* Mono.Zeroconf: First pass at fully-functioning mDNSResponder wrapping;
+	it is ready for inclusion in daap-sharp
+
+2006-01-16  Aaron Bockover  <aaron@aaronbock.net>
+
+	* Mono.ZeroConf: Setup to work with mono build system; initial import
+	into testing SVN for initial development (abock.org)
+
+

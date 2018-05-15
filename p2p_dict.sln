@@ -13,12 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestP2PDict", "tests\p2p_te
 		{5176ADE7-E923-422D-92B3-6BA10D884891} = {5176ADE7-E923-422D-92B3-6BA10D884891}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2PDictionary", "src\P2PDictionary\P2PDictionary.csproj", "{5176ADE7-E923-422D-92B3-6BA10D884891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2PDictionary", "src\P2PDictionary\P2PDictionary.csproj", "{5176ADE7-E923-422D-92B3-6BA10D884891}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2PDictionary.Persistence", "src\P2PDictionary.Persistence\P2PDictionary.Persistence.csproj", "{CE2FEEAB-E287-4663-990D-5B960E42510B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5176ADE7-E923-422D-92B3-6BA10D884891} = {5176ADE7-E923-422D-92B3-6BA10D884891}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf", "extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf\Mono.Zeroconf.csproj", "{5CF88E3A-13DD-4114-BAD9-DA826946516F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf.Providers.Bonjour", "extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj", "{623325E2-5821-4701-A40C-3759097008DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +78,30 @@ Global
 		{CE2FEEAB-E287-4663-990D-5B960E42510B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CE2FEEAB-E287-4663-990D-5B960E42510B}.Release|x86.ActiveCfg = Release|Any CPU
 		{CE2FEEAB-E287-4663-990D-5B960E42510B}.Release|x86.Build.0 = Release|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|x86.Build.0 = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|x86.ActiveCfg = Debug|Any CPU
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Release|x86.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Debug|x86.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|x86.ActiveCfg = Debug|Any CPU
+		{623325E2-5821-4701-A40C-3759097008DD}.Release|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

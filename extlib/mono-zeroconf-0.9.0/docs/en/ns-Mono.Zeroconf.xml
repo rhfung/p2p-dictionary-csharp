@@ -1,0 +1,6 @@
+<Namespace Name="Mono.Zeroconf">
+  <Docs>
+    <summary>User level API for browsing and publishing mDNS records.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+</Namespace>
