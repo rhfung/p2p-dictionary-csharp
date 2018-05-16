@@ -1,11 +1,13 @@
-﻿using Mono.Zeroconf;
+﻿using com.rhfung.P2PDictionary.Peers;
+using Mono.Zeroconf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace com.rhfung.P2PDictionary
 {
     // Apple Bonjour's peer discovery only works as a singleton
-    class PeerDiscovery: IDisposable
+    public class ZeroconfDiscovery: IDisposable, IPeerInterface
     {
         private const string ZEROCONF_NAME = "_com-rhfung-peer._tcp";
 
@@ -18,12 +20,19 @@ namespace com.rhfung.P2PDictionary
         // must lock for use
         public static Dictionary<int, List<EndpointInfo>> DiscoveredPeers;
 
-        static PeerDiscovery()
+        ReadOnlyDictionary<int, List<EndpointInfo>> IPeerInterface.DiscoveredPeers {
+            get
+            {
+                return new ReadOnlyDictionary<int, List<EndpointInfo>>(DiscoveredPeers);
+            }
+        }
+
+        static ZeroconfDiscovery()
         {
             DiscoveredPeers = new Dictionary<int, List<EndpointInfo>>(10);
         }
 
-        public PeerDiscovery()
+        public ZeroconfDiscovery()
         {
             
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using com.rhfung.P2PDictionary.Peers;
 
 namespace com.rhfung.P2PDictionary
 {
@@ -38,7 +39,7 @@ namespace com.rhfung.P2PDictionary
 
         List<DataConnection> connections;
         Subscription subscription;
-        PeerDiscovery discovery;
+        IPeerInterface discovery;
 
         int constructNwNextPeer=0;
         int constructNwRandomPeer=0;
@@ -68,10 +69,12 @@ namespace com.rhfung.P2PDictionary
         /// <param name="serverMode"></param>
         /// <param name="clientMode"></param>
         /// <param name="searchForClients">Time to search for clients in ms if clientMode == AutoConnect</param>
+        /// <param name="peerDiscovery">Discovery module</param>
         public P2PDictionary(string description,  int port, string ns,
             P2PDictionaryServerMode serverMode = P2PDictionaryServerMode.AutoRegister,
             P2PDictionaryClientMode clientMode = P2PDictionaryClientMode.AutoConnect,
-            int searchForClients = 1500)
+            int searchForClients = 1500,
+            IPeerInterface peerDiscovery = null)
         {
             // some random ID
             this._description = description;
@@ -86,7 +89,7 @@ namespace com.rhfung.P2PDictionary
             this.connections = new List<DataConnection>();
             this.subscription = new Subscription(this);
 
-            this.discovery = new PeerDiscovery();
+            this.discovery = peerDiscovery;
 
             // sender threads
             ConstructSenderThreads();
@@ -1157,9 +1160,9 @@ namespace com.rhfung.P2PDictionary
         {
             
             List<int> keys ;
-            lock (PeerDiscovery.DiscoveredPeers)
+            lock (this.discovery)
             {
-                keys = new List<int>(PeerDiscovery.DiscoveredPeers.Keys);
+                keys = new List<int>(this.discovery.DiscoveredPeers.Keys);
             }
 
             keys.Remove(this.LocalID);
@@ -1201,9 +1204,9 @@ namespace com.rhfung.P2PDictionary
                     }
                 }
                 List<EndpointInfo> nextConnInfo;
-                lock (PeerDiscovery.DiscoveredPeers)
+                lock (this.discovery)
                 {
-                    nextConnInfo = PeerDiscovery.DiscoveredPeers[nextUID];
+                    nextConnInfo = this.discovery.DiscoveredPeers[nextUID];
                 }
                 lock (nextConnInfo)
                 {
@@ -1226,9 +1229,9 @@ namespace com.rhfung.P2PDictionary
                 }
 
                 List<EndpointInfo> nextConnInfo;
-                lock (PeerDiscovery.DiscoveredPeers)
+                lock (this.discovery)
                 {
-                    nextConnInfo = PeerDiscovery.DiscoveredPeers[keys[pickNum]];
+                    nextConnInfo = this.discovery.DiscoveredPeers[keys[pickNum]];
                 }
                 lock (nextConnInfo)
                 {
@@ -1551,8 +1554,8 @@ namespace com.rhfung.P2PDictionary
             {
                 if (discovery != null)
                 {
-                    List<EndpointInfo> list = new List<EndpointInfo>(PeerDiscovery.DiscoveredPeers.Count);
-                    foreach (List<EndpointInfo> l in PeerDiscovery.DiscoveredPeers.Values)
+                    List<EndpointInfo> list = new List<EndpointInfo>(this.discovery.DiscoveredPeers.Count);
+                    foreach (List<EndpointInfo> l in this.discovery.DiscoveredPeers.Values)
                     {
                         foreach (EndpointInfo m in l)
                         {
