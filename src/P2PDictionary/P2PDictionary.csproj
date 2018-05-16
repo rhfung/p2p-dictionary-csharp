@@ -6,6 +6,9 @@
     <Win32Resource />
     <AssemblyName>P2PDictionary</AssemblyName>
     <RootNamespace>com.rhfung.P2PDictionary</RootNamespace>
+    <Version>2.2.0</Version>
+    <Authors>Richard Fung</Authors>
+    <Company></Company>
   </PropertyGroup>
 
 </Project>
