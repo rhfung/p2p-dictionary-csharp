@@ -5,7 +5,7 @@ using System.Text;
 
 namespace com.rhfung.P2PDictionary
 {
-    internal class EndpointInfo
+    public class EndpointInfo
     {
         public int UID;
         public System.Net.IPAddress Address;

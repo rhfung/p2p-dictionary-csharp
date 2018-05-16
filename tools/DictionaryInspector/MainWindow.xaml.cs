@@ -30,7 +30,8 @@ namespace DictionaryInspector
             InitializeComponent();
 
             mDictionary = new P2PDictionary("Dictionary Inspector", P2PDictionary.GetFreePort(portHint),
-                ns, P2PDictionaryServerMode.AutoRegister, P2PDictionaryClientMode.AutoConnect);
+                ns, P2PDictionaryServerMode.AutoRegister, P2PDictionaryClientMode.AutoConnect,
+                peerDiscovery: new ZeroconfDiscovery());
             mDictionary.DebugBuffer = System.Console.Out;
             mDictionary.AddSubscription("*");
 
