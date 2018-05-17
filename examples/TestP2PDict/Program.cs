@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using com.rhfung.P2PDictionary;
+using System;
 using System.IO;
-using com.rhfung.P2PDictionary;
 
 namespace TestP2PDict
 {

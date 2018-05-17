@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace com.rhfung.P2PDictionary
+﻿namespace com.rhfung.P2PDictionary
 {
     /// <summary>
     /// Data stored in the dictionary with an unknown MIME type.
