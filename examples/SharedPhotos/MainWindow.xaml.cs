@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using com.rhfung.P2PDictionary;
+using com.rhfung.P2PDictionary.Peers;
 
 namespace SharedPhotos
 {
@@ -27,7 +29,12 @@ namespace SharedPhotos
         {
             InitializeComponent();
 
-            dictionary = new P2PDictionary("Peer Dictionary", port, "shared_photos", P2PDictionaryServerMode.AutoRegister, P2PDictionaryClientMode.AutoConnect);
+            dictionary = new P2PDictionary("Peer Dictionary", 
+                port,
+                "shared_photos",
+                P2PDictionaryServerMode.AutoRegister,
+                P2PDictionaryClientMode.AutoConnect,
+                peerDiscovery: new ZeroconfDiscovery());
             dictionary.AddSubscription("*");
             dictionary.Notification += new EventHandler<NotificationEventArgs>(dictionary_Notification);
 

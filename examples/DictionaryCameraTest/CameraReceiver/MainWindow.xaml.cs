@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using com.rhfung.P2PDictionary.Peers;
 
 namespace CameraReceiver
 {
@@ -30,7 +31,10 @@ namespace CameraReceiver
         {
             InitializeComponent();
 
-            dict = new com.rhfung.P2PDictionary.P2PDictionary("Camera receiver", com.rhfung.P2PDictionary.P2PDictionary.GetFreePort( 2012), "cameratest");
+            dict = new com.rhfung.P2PDictionary.P2PDictionary("Camera receiver",
+                com.rhfung.P2PDictionary.P2PDictionary.GetFreePort( 2012), 
+                "cameratest",
+                peerDiscovery: new ZeroconfDiscovery());
             dict.AddSubscription("frame");
             dict.AddSubscription("time");
             dict.Notification += new EventHandler<com.rhfung.P2PDictionary.NotificationEventArgs>(dict_Notification);

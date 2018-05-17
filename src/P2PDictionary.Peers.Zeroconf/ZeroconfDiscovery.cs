@@ -1,10 +1,9 @@
-﻿using com.rhfung.P2PDictionary.Peers;
-using Mono.Zeroconf;
+﻿using Mono.Zeroconf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace com.rhfung.P2PDictionary
+namespace com.rhfung.P2PDictionary.Peers
 {
     // Apple Bonjour's peer discovery only works as a singleton
     public class ZeroconfDiscovery: IDisposable, IPeerInterface

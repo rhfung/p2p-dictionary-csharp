@@ -112,6 +112,10 @@
       <Project>{5cf88e3a-13dd-4114-bad9-da826946516f}</Project>
       <Name>Mono.Zeroconf</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\P2PDictionary.Peers.Zeroconf\P2PDictionary.Peers.Zeroconf.csproj">
+      <Project>{5b20eec5-29be-479e-8804-414a075bf24b}</Project>
+      <Name>P2PDictionary.Peers.Zeroconf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\P2PDictionary\P2PDictionary.csproj">
       <Project>{f617e155-bab5-46b1-9c89-779f9c6dd9f5}</Project>
       <Name>P2PDictionary</Name>

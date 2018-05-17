@@ -1,4 +1,5 @@
 ﻿using com.rhfung.P2PDictionary;
+using com.rhfung.P2PDictionary.Peers;
 using System;
 using System.Collections.Generic;
 using System.Text;

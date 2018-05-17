@@ -18,6 +18,8 @@ using System.Windows.Shapes;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using System.IO;
+using com.rhfung.P2PDictionary;
+using com.rhfung.P2PDictionary.Peers;
 
 namespace CameraSource
 {
@@ -63,7 +65,9 @@ namespace CameraSource
             this.Title = devices[0].Name;
 
             // set up the dictionary
-            dict = new com.rhfung.P2PDictionary.P2PDictionary("Camera source", com.rhfung.P2PDictionary.P2PDictionary.GetFreePort(2011), "cameratest");
+            dict = new com.rhfung.P2PDictionary.P2PDictionary("Camera source",
+                com.rhfung.P2PDictionary.P2PDictionary.GetFreePort(2011),
+                "cameratest", peerDiscovery: new ZeroconfDiscovery());
 
             // start 30 Hz source
             timer = new System.Windows.Threading.DispatcherTimer();

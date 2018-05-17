@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using com.rhfung.P2PDictionary;
+using com.rhfung.P2PDictionary.Peers;
 
 namespace SimpleChat
 {
@@ -27,7 +28,12 @@ namespace SimpleChat
         {
             InitializeComponent();
 
-            dictionary = new P2PDictionary("Peer Dictionary", P2PDictionary.GetFreePort(port), "SimpleChat", P2PDictionaryServerMode.AutoRegister, P2PDictionaryClientMode.AutoConnect);
+            dictionary = new P2PDictionary("Peer Dictionary", 
+                P2PDictionary.GetFreePort(port),
+                "SimpleChat", 
+                P2PDictionaryServerMode.AutoRegister,
+                P2PDictionaryClientMode.AutoConnect,
+                peerDiscovery: new ZeroconfDiscovery());
             dictionary.AddSubscription("*");
             dictionary.Notification += new EventHandler<NotificationEventArgs>(dictionary_Notification);
 
