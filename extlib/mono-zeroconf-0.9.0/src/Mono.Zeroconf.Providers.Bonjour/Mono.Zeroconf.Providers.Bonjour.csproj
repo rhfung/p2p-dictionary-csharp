@@ -68,7 +68,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Mono.Zeroconf\Mono.Zeroconf.csproj">
       <Project>{623325E2-5821-4701-A40C-3759097008DD}</Project>
-      <Name>Mono.Zeroconf</Name>
+      <Name>Mono.Zeroconf.Providers.Bonjour</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
