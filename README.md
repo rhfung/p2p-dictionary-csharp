@@ -104,6 +104,37 @@ Static methods:
 * `Notified` when a subscribed dictionary key is added, changed, or removed
 * `SubscriptionChanged` when a subscription changes
 
+Building
+--------
+
+Build on Linux/Mac using Docker. Example commands:
+
+    cd <SOURCEDIR>
+    docker build -t p2pd-csharp .
+    docker run -p 8800:8800 -it p2pd-csharp -s test -p 8800
+
+And open http://localhost:8800 to see the running server.
+
+Get additional commands using (see next section for detail):
+
+    docker run -p 8800:8800 -it p2pd-csharp --help
+
+Command Line Interface
+----------------------
+
+The CLI `p2pd` and `p2pwin` support the following arguments:
+
+      -m, --description    (Default: ) Description for the server
+      -p, --port           (Default: 8765) Bind to port
+      -s, --namespace      Required. Namespace for the server
+      -t, --timespan       (Default: 1500) Search interval for clients
+      -d, --discovery      Specify a backend discovery mechanism, defaults to none
+      --nopattern          Monitors no patterns
+      --pattern            Monitors a specific pattern using wildcard (*), single character (?), and number (#) placeholders; default to *
+      -n                   Provide clients in the form host:port
+      --debug
+      --fulldebug
+
 Change Log
 ----------
 
