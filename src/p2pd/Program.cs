@@ -23,7 +23,7 @@ namespace com.rhfung.P2PDictionary
             [Option('t', "timespan", Default = 1500, HelpText = "Search interval for clients")]
             public int Timespan { get; set; }
 
-            [Option('d', "discovery", HelpText = "Specify a backend discovery mechanism")]
+            [Option('d', "discovery", Default = "none", HelpText = "Specify a backend discovery mechanism. Supported modules: none, bonjour, win-bonjour")]
             public string Discovery { get; set;  }
 
             [Option(HelpText = "Monitors no patterns")]
@@ -54,12 +54,25 @@ namespace com.rhfung.P2PDictionary
 
         static void RunOptionsAndExit(Options opts)
         {
+            var discoveryModules = new Dictionary<string, Func<IPeerInterface>>();
+            discoveryModules.Add("none", () => new NoDiscovery());
+#if !NETCOREAPP2_0
+            discoveryModules.Add("bonjour", () => new ZeroconfDiscovery());
+            discoveryModules.Add("win-bonjour", () => new ZeroconfDiscovery());
+#endif
+
+            if (!discoveryModules.ContainsKey(opts.Discovery))
+            {
+                Console.Error.WriteLine($"Discovery module not supported: {opts.Discovery}");
+                return;
+            }
+
             P2PDictionary dict = new P2PDictionary(
                 opts.Description,
                 opts.Port,
                 opts.Namespace,
                 searchForClients: opts.Timespan,
-                peerDiscovery: new NoDiscovery());
+                peerDiscovery: discoveryModules[opts.Discovery]());
             
             if (opts.FullDebug)
             {

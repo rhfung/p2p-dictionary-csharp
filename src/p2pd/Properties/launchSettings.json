@@ -2,7 +2,7 @@
   "profiles": {
     "p2pd": {
       "commandName": "Project",
-      "commandLineArgs": "--namespace=test --debug -p 8090"
+      "commandLineArgs": "--namespace=test --debug -p 8090 -d bonjour"
     }
   }
 }

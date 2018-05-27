@@ -24,8 +24,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf", "extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf\Mono.Zeroconf.csproj", "{5CF88E3A-13DD-4114-BAD9-DA826946516F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf.Providers.Bonjour", "extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj", "{623325E2-5821-4701-A40C-3759097008DD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5CF88E3A-13DD-4114-BAD9-DA826946516F} = {5CF88E3A-13DD-4114-BAD9-DA826946516F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p2pd", "src\p2pd\p2pd.csproj", "{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p2pd", "src\p2pd\p2pd.csproj", "{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p2pwin", "src\p2pwin\p2pwin.csproj", "{134E8EDA-B066-4E64-A00A-D508004F8A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +136,18 @@ Global
 		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|x86.ActiveCfg = Release|Any CPU
 		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|x86.Build.0 = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{134E8EDA-B066-4E64-A00A-D508004F8A3F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
