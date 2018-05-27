@@ -37,6 +37,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="P2PDictionary.dll" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

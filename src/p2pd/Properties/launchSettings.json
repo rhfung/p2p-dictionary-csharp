@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "p2pd": {
+      "commandName": "Project",
+      "commandLineArgs": "--namespace=test --debug -p 8090"
+    }
+  }
+}

@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf", "extlib\mon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf.Providers.Bonjour", "extlib\mono-zeroconf-0.9.0\src\Mono.Zeroconf.Providers.Bonjour\Mono.Zeroconf.Providers.Bonjour.csproj", "{623325E2-5821-4701-A40C-3759097008DD}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "p2pd", "src\p2pd\p2pd.pyproj", "{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p2pd", "src\p2pd\p2pd.csproj", "{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,12 +119,18 @@ Global
 		{623325E2-5821-4701-A40C-3759097008DD}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{623325E2-5821-4701-A40C-3759097008DD}.Release|x86.ActiveCfg = Debug|Any CPU
 		{623325E2-5821-4701-A40C-3759097008DD}.Release|x86.Build.0 = Debug|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{1B51AC39-87AD-4D5E-900D-9FCD786DCC61}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Debug|x86.Build.0 = Debug|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EDC4DF9-0CE4-4F41-B973-2D1D6ECE6E06}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
