@@ -32,7 +32,7 @@ namespace CameraReceiver
             InitializeComponent();
 
             dict = new com.rhfung.P2PDictionary.P2PDictionary("Camera receiver",
-                com.rhfung.P2PDictionary.P2PDictionary.GetFreePort( 2012), 
+                com.rhfung.P2PDictionary.P2PDictionary.GetFreePort( 2012),
                 "cameratest",
                 peerDiscovery: new ZeroconfDiscovery());
             dict.AddSubscription("frame");
