@@ -46,7 +46,7 @@ def main():
     elif args.get("debug"):
         p2pd.SetDebugBuffer(StreamWriter(Console.OpenStandardOutput()), 1, True)
 
-    # todo: nodes
+    # todo: nodes need to be attached
 
     print "Server starting"
     while True:
