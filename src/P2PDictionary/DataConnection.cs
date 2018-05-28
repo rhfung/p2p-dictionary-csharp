@@ -1335,7 +1335,7 @@ namespace com.rhfung.P2PDictionary
 
         private void ResponseIndex(string verb, StreamWriter writer, bool willClose)
         {
-            string file = string.Format(Properties.Resources.index, this.controller.Description);
+			string file = string.Format(ResourceLoader.GetIndexFile(), this.controller.Description);
             WriteResponseHeader(writer, DATA_NAMESPACE, "text/html", file.Length, this.local_uid, 0, GetListOfThisLocalID(), null,verb, willClose);
             if (verb == GET)
             {
@@ -2223,8 +2223,8 @@ namespace com.rhfung.P2PDictionary
             return new ETag(eTag);
         }
 
-        // web browser handlers
-        private string MSG_ANY = Properties.Resources.error; //"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"><html><head><title>{0} {1}</title></head><body>{0} {1}</body></html>";
+		// web browser handlers
+		private string MSG_ANY = ResourceLoader.GetErrorFile();
 
         private static string GetErrorMessage(int errorNum)
         {

@@ -11,4 +11,12 @@
     <Company></Company>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="resources\error.html" />
+    <None Remove="resources\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="resources\error.html" />
+    <EmbeddedResource Include="resources\index.html" />
+  </ItemGroup>
 </Project>

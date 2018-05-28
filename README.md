@@ -1,15 +1,27 @@
 P2P Dictionary
 ==============
 
-P2P Dictionary is a distributed key-value store for multiple computers
-on a local area network. Each computer runs a P2P server, which replicates
-a subset of stored dictionary entries (key-value pairs). Each computer 
-chooses a subset of keys to subscribe to. This dictionary provides an 
-API written for .NET and Java applications. A REST interface is provided
-by the P2P server for read-only access to dictionary entries. A local area
-network is defined by Apple Bonjour's local service discovery. Similar to
-other NoSQL implementations, it does not provide an SQL interface or
+P2P Dictionary is a distributed key-value store for multiple nodes
+on a local area network. Each node will subscribe to 
+a subset of key-value pairs. Key-value pairs are replicated as necessary
+between nodes to reach to another node. Similar to most 
+NoSQL implementations, it does not provide an SQL interface or
 guarantee ACID (atomicity, consistency, isolation, durability).
+
+P2P dictionary will run on a local area network discovered using 
+LAN discovery technologies (e.g., Apple Bonjour, Zeroconf, UDP broadcast)
+or any reachable IP address in a public network. Peer links can be discovered
+or connected by the client.
+
+P2P dictionary provides a server written in 
+[.NET Framework](https://github.com/rhfung/p2p-dictionary-csharp), 
+[.NET Core](https://github.com/rhfung/p2p-dictionary-csharp),
+and [Java JVM](https://github.com/rhfung/p2p-dictionary). 
+A REST interface is provided by the P2P server for read-only access
+to key-value pairs. A web interface is provided for web browser access 
+to key-value pairs stored on each node. A redistributable package is provided
+using Docker containers with both .NET and Java implementations.
+
 
 Copyright (C) 2011-2018, Richard H Fung
 
@@ -21,12 +33,21 @@ You agree to the LICENSE before using this Software.
 Basic requirements
 ------------------
 
+All platforms:
+* Microsoft .NET Core 2.x on Linux, Mac, or Windows
+
+For redistributable:
+* Docker 17.05 or higher
+
+For Mac:
+* Visual Studio Code, or
+* Visual Studio for Mac
+
+For Windows:
+* Microsoft Visual Studio 2017
+* Microsoft .NET Framework 4.6.1 on Windows
 * Requires Apple Bonjour Print Services for Windows:
   http://support.apple.com/kb/DL999
-* Microsoft Windows
-* Microsoft Visual Studio 2017
-* Microsoft .NET Framework 4.6.1 on Windows PC
-* Microsoft .NET Core 2.x
 
 Getting Started
 ---------------
@@ -83,9 +104,49 @@ Static methods:
 * `Notified` when a subscribed dictionary key is added, changed, or removed
 * `SubscriptionChanged` when a subscription changes
 
+Building
+--------
+
+Build on Linux/Mac using Docker. Example commands:
+
+    cd <SOURCEDIR>
+    docker build -t p2pd-csharp .
+    docker run -p 8800:8800 -it p2pd-csharp -s test -p 8800
+
+And open http://localhost:8800 to see the running server.
+
+Get additional commands using (see next section for detail):
+
+    docker run -p 8800:8800 -it p2pd-csharp --help
+
+Command Line Interface
+----------------------
+
+The CLI `p2pd` and `p2pwin` support the following arguments:
+
+      -m, --description    (Default: ) Description for the server
+      -p, --port           (Default: 8765) Bind to port
+      -s, --namespace      Required. Namespace for the server
+      -t, --timespan       (Default: 1500) Search interval for clients
+      -d, --discovery      Specify a backend discovery mechanism, defaults to none
+      --nopattern          Monitors no patterns
+      --pattern            Monitors a specific pattern using wildcard (*), single character (?), and number (#) placeholders; default to *
+      -n                   Provide clients in the form host:port
+      --debug
+      --fulldebug
+
 Change Log
 ----------
 
-* 2.1: upgraded to .NET Framework 4.6.1 and Visual Studio 2017
-* 2.0: new REST API, Bonjour registration, support for any MIME type, and stability bug fixes. Not compatible with 1.6.3. Cross-platform.
+* 2.1
+  * added supported for .NET Core 2.0
+  * upgraded to .NET Framework 4.6.1 and Visual Studio 2017
+  * added in required constructor argument for `IPeerInterface` and default discovery module `NoDiscovery`
+  * added CLI for [Windows p2pwin](src/p2pwin) and [Linux p2pd](src/p2pd)
+  * new discovery module [P2PDictionary.Peers.Zeroconf](src/P2PDictionary.Peers.Zeroconf) for `ZeroconfDiscovery` module that was previously enabled by default
 
+* 2.0
+  * new REST API
+  * Bonjour registration
+  * support for any MIME type
+  * not compatible with 1.6.3
